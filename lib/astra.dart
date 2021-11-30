@@ -23,7 +23,7 @@ class _AstraState extends State<Astra> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    for (var i = 0; i < 8; i++) {
+    for (var i = 0; i < 15; i++) {
       weightPointControllers.add(
         AnimationController(
           vsync: this,
@@ -34,7 +34,7 @@ class _AstraState extends State<Astra> with TickerProviderStateMixin {
       );
     }
 
-    for (var i = 1; i < 2; i++) {
+    for (var i = 1; i < 4; i++) {
       List<AstraWeight> weights = [];
       for (var i = 0; i < 6; i++) {
         weights.add(
@@ -71,7 +71,7 @@ class _AstraState extends State<Astra> with TickerProviderStateMixin {
       circles.add(
         AstraCircle(
           origin: Offset(size / 2, size / 2),
-          radius: (size / 2) + i,
+          radius: (size / 2) + (i * 2),
           weights: weights,
         ),
       );
@@ -115,7 +115,7 @@ class AstraPainter extends CustomPainter {
       var circle = circles[i];
       final paint = Paint()
         ..strokeWidth = 1
-        ..color = Colors.white.withOpacity(0.8 - (0.2 * i));
+        ..color = Colors.white.withOpacity(0.8 - (0.1 * i));
 
       var path = circle.drawPath();
       canvas.drawPath(path, paint);
